@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title> Video Player in JavaScript | CodingLab </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Users/leenusvalantine/Desktop/mervin website/videospagesstyle.css"> <!-- Update the path as necessary -->
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    .navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 0px;
+    text-align: center;
+    z-index: 999; /* Ensure the navbar is above other content */
+}
+.navbar a {
+    color: #fff; /* White text color */
+    padding: 40px;
+    text-decoration: none;
+    margin:  20px;
+    margin-top: 0%;}
+
+    h1 {
+    color: coral;
+    margin: 10px;
+    margin-top: 70px;
+  }
+
+</style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <a href="/Users/leenusvalantine/Desktop/mervin website/index.html">Home</a>
+        <a href="/Users/leenusvalantine/Desktop/mervin website/wishespage.html">Wishes</a>
+        <a href="/Users/leenusvalantine/Desktop/mervin website/notespage.html">Notes</a>
+        <a href="/Users/leenusvalantine/Desktop/mervin website/gallerypage.html">Gallery</a>
+        <a href="/Users/leenusvalantine/Desktop/mervin website/videospage.html">Videos</a>
+    </div>
+<section>
+  <div class="container">
+
+   <h1>Moments!</h1>
+    <div class="main-video" style="display:none;">
+      <video controls></video>
+      <i class='bx bx-x close'></i>
+    </div>
+    <div class="video-list">
+      <!-- Thumbnails -->
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m1.MP4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t1.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m2.MP4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t2.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m3.MP4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t3.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m4.MP4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t4.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m5.MP4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t5.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m6.mp4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t6.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m7.mp4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t7.jpeg'); background-size: cover;"></div>
+      <div class="video" data-src="/Users/leenusvalantine/Desktop/mervin website/photos/m8.mp4" style="background-image: url('/Users/leenusvalantine/Desktop/mervin website/photos/t8.jpeg'); background-size: cover;"></div>
+
+
+      <!-- Add more thumbnails as needed, update the thumbnail path -->
+    </div>
+  </div>
+</section>
+
+<script>
+const mainVideo = document.querySelector(".main-video video");
+const videos = document.querySelectorAll(".video");
+const mainVideoContainer = document.querySelector(".main-video");
+const close = document.querySelector(".close");
+
+videos.forEach(video => {
+  video.addEventListener("click", () => {
+    const src = video.getAttribute("data-src");
+    mainVideo.src = src;
+    mainVideoContainer.style.display = "flex";
+  });
+});
+
+close.addEventListener("click", () => {
+  mainVideoContainer.style.display = "none";
+  mainVideo.src = "";
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".container")) {
+    mainVideoContainer.style.display = "none";
+    mainVideo.src = "";
+  }
+});
+</script>
+</body>
+</html>
